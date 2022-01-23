@@ -18,6 +18,11 @@ function skip(a,b) {
     return b;
 }
 
+function roundToDecimalPlaces(floatNumber, decimalPlaces) {
+    const decimalPlacesFactor = 10**decimalPlaces
+    return Math.round(floatNumber * decimalPlacesFactor) / decimalPlacesFactor;
+}
+
 function operate(numberOne, numberTwo, operation) {
     return operation(numberOne, numberTwo);
 }
@@ -127,7 +132,7 @@ function applyOperation(){
         populateContent("");
     }
     else {
-        populateContent(result);
+        populateContent(roundToDecimalPlaces(result,3));
     }
     notOperated = false;
     firstNumber = result;
@@ -143,7 +148,7 @@ function applyEqual(){
         populateContent("");
     }
     else {
-        populateContent(result);
+        populateContent(roundToDecimalPlaces(result,3));
     }
     notOperated = false;
     firstNumber = result;
