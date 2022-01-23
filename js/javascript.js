@@ -124,9 +124,7 @@ function getOperator(operatorSymbol) {
 
 function applyOperation(){
     secondNumber = Number(currentDisplay);
-    console.log(`NumberTwo: ${secondNumber}`);
     let result = operate(firstNumber, secondNumber, operation);
-    console.log(result);
     currentDisplay = "";
     if (notOperated) {
         populateContent("");
@@ -140,9 +138,7 @@ function applyOperation(){
 
 function applyEqual(){
     secondNumber = Number(currentDisplay);
-    console.log(`NumberTwo: ${secondNumber}`);
     let result = operate(firstNumber, secondNumber, operation);
-    console.log(result);
     currentDisplay = result.toString();
     if (notOperated) {
         populateContent("");
@@ -155,24 +151,16 @@ function applyEqual(){
 }
 
 function pressEqual(event) {
-    console.log(`NumberOne: ${firstNumber}`);
-    console.log(`Operation: ${operation}`);
     const buttonEqual = event.target;
     applyEqual();
-    console.log(`After Operation: NumberOne: ${firstNumber}`);
-    console.log(`After Operation: NumberOne: ${secondNumber}`);
     operation = skip;
     notOperated = true; 
 }
 
 function pressOperator(event) {
     const buttonOperator = event.target;
-    console.log(`NumberOne: ${firstNumber}`);
     applyOperation();
-    console.log(`Operation: ${operation}`);
     const operator = getOperator(buttonOperator.textContent);
-    console.log(`After Operation: NumberOne: ${firstNumber}`);
-    console.log(`After Operation: NumberOne: ${secondNumber}`);
     operation = operator;
 }
 
