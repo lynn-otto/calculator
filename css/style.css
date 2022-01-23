@@ -15,10 +15,19 @@ body {
 
 .screen {
     width: 400px;
-    height: 80px;
+    height: 60px;
     background-color: rgb(21, 110, 43);
     border-radius: 5px;
-    border: 2px solid rgb(21, 50, 43)
+    border: 2px solid rgb(21, 50, 43);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+    font-weight: 700;
+    display:flex;
+    justify-content: end;
+}
+
+.content {
+    margin-right: 10px;
 }
 
 .row {
