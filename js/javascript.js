@@ -62,6 +62,11 @@ function addButtonLogicBackspace() {
     button.addEventListener('click',backSpace);
 }
 
+function addButtonLogicDot() {
+    const button = document.querySelector('.dot');
+    button.addEventListener('click', addDot);
+}
+
 function backSpace(event){
     if (currentDisplay.length > 0) {
         currentDisplay = currentDisplay.slice(0,-1);
@@ -78,6 +83,19 @@ function reset(event){
     populateContent(currentDisplay);
 }
 
+
+function containsNoDot(inputString) {
+    return !(inputString.includes('.'));
+}
+
+function addDot(){
+    const content = document.querySelector('.content');
+    const value = content.textContent;
+    if (containsNoDot(value)) {
+        changeCurrentDisplay('.');
+        populateContent(currentDisplay);
+    }
+}
 
 
 function getOperator(operatorSymbol) {
@@ -164,3 +182,4 @@ addButtonLogicOperators();
 addButtonLogicEqual();
 addButtonLogicBackspace();
 addButtonLogicClear();
+addButtonLogicDot();
