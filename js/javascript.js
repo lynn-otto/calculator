@@ -52,6 +52,34 @@ function addButtonLogicEqual() {
     button.addEventListener('click', pressEqual);
 }
 
+function addButtonLogicClear() {
+    const button = document.querySelector('#clear');
+    button.addEventListener('click',reset);
+}
+
+function addButtonLogicBackspace() {
+    const button = document.querySelector('#back');
+    button.addEventListener('click',backSpace);
+}
+
+function backSpace(event){
+    if (currentDisplay.length > 0) {
+        currentDisplay = currentDisplay.slice(0,-1);
+        populateContent(currentDisplay);
+    }
+}
+
+function reset(event){
+    notOperated = true;
+    currentDisplay = "";
+    firstNumber = 0;
+    secondNumber = 0;
+    operation = skip;
+    populateContent(currentDisplay);
+}
+
+
+
 function getOperator(operatorSymbol) {
     let nextOperation;
     switch (operatorSymbol) {
@@ -122,8 +150,6 @@ function pressOperator(event) {
     const operator = getOperator(buttonOperator.textContent);
     console.log(`After Operation: NumberOne: ${firstNumber}`);
     console.log(`After Operation: NumberOne: ${secondNumber}`);
-
-
     operation = operator;
 }
 
@@ -136,3 +162,5 @@ let operation = skip;
 addButtonLogicNumbers();
 addButtonLogicOperators();
 addButtonLogicEqual();
+addButtonLogicBackspace();
+addButtonLogicClear();
