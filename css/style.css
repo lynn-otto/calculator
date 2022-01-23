@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 body {
     display: flex;
     justify-content: center;
@@ -14,20 +16,26 @@ body {
 }
 
 .screen {
-    width: 400px;
-    height: 60px;
+    min-width: 400px;
+    min-height: 60px;
     background-color: rgb(21, 110, 43);
     border-radius: 5px;
     border: 2px solid rgb(21, 50, 43);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 40px;
+    font-family: 'Press Start 2P','Courier New', Courier, monospace;
+    font-size: 35px;
     font-weight: 700;
     display:flex;
     justify-content: end;
+    align-items: center;
 }
 
 .content {
     margin-right: 10px;
+    color:rgb(44, 219, 0);
+    text-shadow: 
+    0 0 5px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa;
 }
 
 .row {
@@ -55,8 +63,16 @@ body {
     background-color: royalblue;
 }
 
+.dot {
+    background-color: pink;
+}
+
 #clear {
     background-color: red;
+}
+
+#back {
+    background-color: purple;
 }
 
 .functional {
