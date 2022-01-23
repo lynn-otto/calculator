@@ -51,6 +51,10 @@ body {
     background-color: lightgreen;
 }
 
+.equal {
+    background-color: royalblue;
+}
+
 #clear {
     background-color: red;
 }

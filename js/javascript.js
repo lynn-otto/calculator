@@ -42,9 +42,97 @@ function pressNumber(event) {
     populateContent(currentDisplay);
 }
 
+function addButtonLogicOperators() {
+    const buttons = document.querySelectorAll('.operator');
+    buttons.forEach(button => button.addEventListener('click', pressOperator));
+}
+
+function addButtonLogicEqual() {
+    const button = document.querySelector('.equal');
+    button.addEventListener('click', pressEqual);
+}
+
+function getOperator(operatorSymbol) {
+    let nextOperation;
+    switch (operatorSymbol) {
+        case "+":
+            nextOperation = add;
+            break;
+        case "-":
+            nextOperation = subtract;
+            break;
+        case "*":
+            nextOperation = multiply;
+            break;
+        case "/":
+            nextOperation = divide;
+            break;
+    }
+    return nextOperation;
+}
+
+function applyOperation(){
+    secondNumber = Number(currentDisplay);
+    console.log(`NumberTwo: ${secondNumber}`);
+    let result = operate(firstNumber, secondNumber, operation);
+    console.log(result);
+    currentDisplay = "";
+    if (notOperated) {
+        populateContent("");
+    }
+    else {
+        populateContent(result);
+    }
+    notOperated = false;
+    firstNumber = result;
+}
+
+function applyEqual(){
+    secondNumber = Number(currentDisplay);
+    console.log(`NumberTwo: ${secondNumber}`);
+    let result = operate(firstNumber, secondNumber, operation);
+    console.log(result);
+    currentDisplay = result.toString();
+    if (notOperated) {
+        populateContent("");
+    }
+    else {
+        populateContent(result);
+    }
+    notOperated = false;
+    firstNumber = result;
+}
+
+function pressEqual(event) {
+    console.log(`NumberOne: ${firstNumber}`);
+    console.log(`Operation: ${operation}`);
+    const buttonEqual = event.target;
+    applyEqual();
+    console.log(`After Operation: NumberOne: ${firstNumber}`);
+    console.log(`After Operation: NumberOne: ${secondNumber}`);
+    operation = skip;
+    notOperated = true; 
+}
+
+function pressOperator(event) {
+    const buttonOperator = event.target;
+    console.log(`NumberOne: ${firstNumber}`);
+    applyOperation();
+    console.log(`Operation: ${operation}`);
+    const operator = getOperator(buttonOperator.textContent);
+    console.log(`After Operation: NumberOne: ${firstNumber}`);
+    console.log(`After Operation: NumberOne: ${secondNumber}`);
+
+
+    operation = operator;
+}
+
+let notOperated = true;
 let currentDisplay = "";
 let firstNumber = 0;
 let secondNumber = 0;
 let operation = skip;
 
 addButtonLogicNumbers();
+addButtonLogicOperators();
+addButtonLogicEqual();
